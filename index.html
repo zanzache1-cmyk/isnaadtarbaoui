@@ -148,7 +148,26 @@ footer .rights{color:#bfae8f;font-size:.88rem;margin-top:4px}
 
 <script>
 /* ====== الإعدادات ====== */
-var ENDPOINT="https://script.google.com/macros/s/AKfycbynOI-lx4vR_A6LEHuWH3Vttbysl5buR0a5t0kALaSkUzB-GZ4SbHKkhfAVNox643rW/exec";
+   // استبدل هذا الرابط بالرابط الذي حصلت عليه من الخطوة السابقة
+   const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwmvEUGc9qOemmZOl8KAOl5J6XMLuvGkphQiLYu-N1Q109eifPlnFF-mYZ2r-PsvHtB/exec";
+
+   async function sendAssignmentToGoogleSheet(assignmentData) {
+       try {
+           const response = await fetch(WEB_APP_URL, {
+               method: "POST",
+               mode: "no-cors",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+               body: JSON.stringify(assignmentData)
+           });
+           console.log("تم إرسال البيانات بنجاح!");
+           alert("تم حفظ الإسناد في Google Sheets بنجاح!");
+       } catch (error) {
+           console.error("خطأ:", error);
+           alert("حدث خطأ أثناء الاتصال بـ Google Sheets.");
+       }
+   }
 
 var INST=[
   "ابتدائية طارق بن زياد حدّ الصّحاري",
